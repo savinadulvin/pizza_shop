@@ -4,9 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                {{-- <a href="{{ route('manufacturers.create') }}" class="btn btn-primary mt-4 mb-4">
-                    Add Manufacturer
-                </a> --}}
+                
             </div>
         </div>
         <div class="row">
