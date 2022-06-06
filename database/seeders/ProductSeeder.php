@@ -165,7 +165,7 @@ class ProductSeeder extends Seeder
             [
                 'manufacturer_id' => 1,
                 'pizza_model_id' => 13,
-                'name' => 'Create Your Own (not a named pizza)',
+                'name' => 'Create Your Own',
                 'summary' => 'Small',
                 'price' => 8,
                 'description' => 'Create a pizza for your own preference',
@@ -177,7 +177,7 @@ class ProductSeeder extends Seeder
             [
                 'manufacturer_id' => 1,
                 'pizza_model_id' => 14,
-                'name' => 'Create Your Own (not a named pizza)',
+                'name' => 'Create Your Own',
                 'summary' => 'Medium',
                 'price' => 9,
                 'description' => 'Create a pizza for your own preference',
@@ -189,7 +189,7 @@ class ProductSeeder extends Seeder
             [
                 'manufacturer_id' => 1,
                 'pizza_model_id' => 15,
-                'name' => 'Create Your Own (not a named pizza)',
+                'name' => 'Create Your Own',
                 'summary' => 'Large',
                 'price' => 11,
                 'description' => 'Create a pizza for your own preference',

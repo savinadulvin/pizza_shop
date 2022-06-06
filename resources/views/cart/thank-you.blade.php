@@ -8,7 +8,7 @@
                 <strong>Your order is complete</strong> Please check your email for order information.</p>
             <hr>
             <p>
-              Having trouble? <a href="">Contact us</a>
+              Having trouble? <b>Contact us: </b> +94 712343454/ +94 112343456
             </p>
             <p class="lead">
               <a class="btn btn-primary btn-sm" href="/" role="button">Continue shopping</a>
