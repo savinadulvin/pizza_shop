@@ -52,7 +52,7 @@ class CartController extends Controller
         // check if there are any addons and add them to the product total
         if ($request->pizza_addons) {
             foreach ($request->pizza_addons as $addon) {
-                $product_total += (new PizzaAddon())->findOrFail($addon)->value;
+                $product_total += (new PizzaAddon())->findOrFail($addon)->value * $validated['quantity'];
             }
         }
 
@@ -212,9 +212,11 @@ class CartController extends Controller
 
             // count all the products in the cart
             $count = 0;
+            
             foreach ($cart->products as $product) {
                 $count += $product->pivot->quantity;
             }
+            
 
             // check if the promotion has a value and that is equal to the number of items in the cart
             if ($promotion->value == $count) {
@@ -343,6 +345,7 @@ class CartController extends Controller
                 'quantity' => $validated['quantity'],
                 'price' => $product->price,
                 'total' => $product->price * $validated['quantity'],
+                
             ]
         ]);
 

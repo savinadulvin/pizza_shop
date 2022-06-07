@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
 
         $this->call([
+            PizzaSizeSeeder::class,
             DeliveryMethodSeeder::class,
             ManufacturerSeeder::class,
             PizzaModelSeeder::class,

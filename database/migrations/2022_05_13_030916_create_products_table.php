@@ -22,6 +22,8 @@ return new class extends Migration
             $table->bigInteger('pizza_model_id')->unsigned();
             $table->foreign('pizza_model_id')->references('id')->on('pizza_models');
 
+            $table->bigInteger('size_id')->unsigned()->nullable();
+        
             $table->string('name'); // varchar 255
 
             $table->text('summary')->nullable();

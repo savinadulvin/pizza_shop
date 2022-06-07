@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
 
+            $table->bigInteger('size_id')->unsigned()->nullable();
+
             $table->string('name'); // varchar 255
 
             $table->string('code'); // varchar 255

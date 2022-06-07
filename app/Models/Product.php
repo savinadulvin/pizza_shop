@@ -12,6 +12,7 @@ class Product extends Model
     protected $fillable = [
         'manufacturer_id',
         'pizza_model_id',
+        'size_id',
         'name',
         'summary',
         'price',
@@ -21,6 +22,10 @@ class Product extends Model
         'is_featured',
         'sort_order',
     ];
+
+    public function size(){
+        return $this->belongsTo(PizzaSize::class);
+    }
 
     public function manufacturer()
     {

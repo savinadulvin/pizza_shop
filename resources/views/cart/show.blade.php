@@ -53,7 +53,8 @@
                                             </div>
                                         </td>
                                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                                            <form action="{{ route('cart.update', $cart->id) }}" method="POST"
+                                            <h4> {{$product->pivot->quantity}} </h4>
+                                            {{-- <form action="{{ route('cart.update', $cart->id) }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('PUT')
@@ -63,7 +64,7 @@
                                                 <button type="submit" class="btn btn-sm btn-info">
                                                     <span class="glyphicon glyphicon-remove"></span> Update
                                                 </button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                         <td class="col-sm-1 col-md-1 text-center"><strong>£
                                                 {{ number_format($product->pivot->price, 2) }}</strong></td>

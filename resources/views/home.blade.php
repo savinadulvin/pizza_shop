@@ -34,7 +34,8 @@
                                         <h5 class="card-title">
                                             {{ $product->name }}
                                         </h5>
-                                        <p class="card-text">{{ $product->summary }}</p>
+
+                                        <p class="card-text">{{ $product->size ? $product->size->name : '' }}</p>
 
                                         <h4>£ {{ number_format($product->price, 2) }}</h4>
 
