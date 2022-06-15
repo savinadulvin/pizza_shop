@@ -48,7 +48,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            {{-- @elseif (auth()->user()->role == 'admin' || auth()->user()->role == 'customer') --}}
+
                             <div class="col-6">
                                 <label for="method" class="form-label">Method</label>
                                 <select class="form-control @error('method') is-invalid @enderror" id="method"
@@ -71,39 +71,10 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
-                        {{-- @endif --}}
+
                         </form>
                         @endif
-                        @if(auth()->user()->role == 'customer')
-                        <form class="row g-3" method="POST" action="{{ route('orders.update', $order->id) }}"
-                            enctype="multipart/form-data">
-                            @method('PUT')
-                            @csrf
-                            {{-- @if(auth()->user()->role == 'customer') --}}
-                            <div class="row pt-3">
-                                <div class="col-6">
-                                    <label for="method" class="form-label">Method</label>
-                                    <select class="form-control @error('method') is-invalid @enderror" id="method"
-                                    name="method">
-                                        @foreach (['collection', 'delivery'] as $value)
-                                            <option value="{{ $value }}" {{ old('method', $order->method) == $value ? 'selected' : '' }}>{{ $value }}</option>
-                                        @endforeach
-                                    </select>
-                                
-                                    <div id="Help" class="form-text">Edit Order Collection or Delivery</div>
-                                    @error('method')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                            {{-- @endif --}}
-                            </form>
-                            @endif
+                        
                     </tbody>
                 </table>
                

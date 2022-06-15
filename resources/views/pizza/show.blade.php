@@ -22,7 +22,7 @@
                         <h5 class="card-title">
                             {{ $product->name }}
                         </h5>
-                        <p class="card-text">{{ $product->summary }}</p>
+                        <p class="card-text">{{ $product->size->name }}</p>
 
                         <p class="card-text">{{ $product->description }}</p>
 

@@ -5,7 +5,6 @@
         <div class="p-5 mb-4 bg-light rounded-3">
             <h1>My Cart - #{{ $cart->id }}</h1>
         </div>
-
         <div class="container">
             <div class="row">
                 @if ($cart->products && $cart->products->count())
@@ -17,7 +16,6 @@
                                     <th>Quantity</th>
                                     <th class="text-center">Price</th>
                                     <th class="text-center">Total</th>
-                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,7 +30,6 @@
                                                     <h4 class="media-heading"><a href="#">{{ $product->name }}</a></h4>
                                                     <h5 class="media-heading"> by <a
                                                             href="#">{{ $product->manufacturer->name }}</a></h5>
-
                                                     @if ($product->pivot->addons)
                                                         Product Addons
                                                         <ul>
@@ -44,7 +41,6 @@
                                                             @endforeach
                                                         </ul>
                                                     @endif
-
                                                     <span>Status: </span>
                                                     <span class="text-success">
                                                         <strong>In Stock</strong>
@@ -54,17 +50,6 @@
                                         </td>
                                         <td class="col-sm-1 col-md-1" style="text-align: center">
                                             <h4> {{$product->pivot->quantity}} </h4>
-                                            {{-- <form action="{{ route('cart.update', $cart->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="product_id" value="{{ $product->id }}" />
-                                                <input type="number" class="form-control" name="quantity"
-                                                    value="{{ $product->pivot->quantity }}">
-                                                <button type="submit" class="btn btn-sm btn-info">
-                                                    <span class="glyphicon glyphicon-remove"></span> Update
-                                                </button>
-                                            </form> --}}
                                         </td>
                                         <td class="col-sm-1 col-md-1 text-center"><strong>£
                                                 {{ number_format($product->pivot->price, 2) }}</strong></td>

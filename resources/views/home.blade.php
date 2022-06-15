@@ -13,13 +13,15 @@
                      
                  @endcan
                  <br>
-                <p class="col-md-8 fs-4">
+                {{-- <p class="col-md-8 fs-4"> --}}
+                    <h3>
                     Preparing pizza dough, sauces, and various toppings, such as tomatoes, 
                     peppers, mushrooms, onions, and meats. Monitoring the temperature of the pizza 
                     ovens as well as cooking times. Preparing high-quality pizzas according to company 
                     recipes. Monitoring inventory and placing orders for more supplies as needed.
-
-                </p>
+                    </h3>
+                    <br>
+                {{-- </p> --}}
 
                 <div class="row">
                     @if ($products && $products->count())

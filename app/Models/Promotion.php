@@ -17,6 +17,7 @@ class Promotion extends Model
         'price_type',
         'price_value',
         'description',
+        'pizza_model_id',
         'image',
         'is_active',
     ];

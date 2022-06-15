@@ -70,16 +70,8 @@
                                     <li><hr class="dropdown-divider"></li>
 
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('manufacturers.index') }}">Manufacturers</a>
-                                    </li>
-
-                                    <li>
                                         <a class="dropdown-item" href="{{ route('pizza-models.index') }}">Categories</a>
                                     </li>
-
-                                    {{-- <li>
-                                        <a class="dropdown-item" href="{{ route('pizza-addons.index') }}">Addons</a>
-                                    </li> --}}
 
                                     <li>
                                         <a class="dropdown-item" href="{{ route('pizzas.index') }}">Pizza</a>
@@ -89,18 +81,6 @@
                                     <li><hr class="dropdown-divider"></li>
                                     <li class="text-black-50 ps-3">E-Commerce</li>
                                     <li><hr class="dropdown-divider"></li>
-
-                                    {{-- <li>
-                                        <a class="dropdown-item" href="{{ route('promotions.index') }}">Promotions</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('stores.index') }}">Stores</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('delivery-methods.index') }}">Delivery Methods</a>
-                                    </li> --}}
 
                                     <li>
                                         <a class="dropdown-item" href="{{ route('orders.index') }}">Orders</a>

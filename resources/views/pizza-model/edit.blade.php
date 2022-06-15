@@ -36,17 +36,17 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <x-text-field field-id="name" label="Name" help-text="Pizza Category Name" type="text"
+                                    <x-text-field field-id="name" label="Name" help-text="Pizza Name" type="text"
                                         :model="$pizzaModel" />
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <x-text-field field-id="description" label="Description"
                                         help-text="Small description about the pizza category" type="text"
                                         :model="$pizzaModel" />
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-md-12">
                                     @if ($pizzaModel->image)
                                         <img src="{{ asset('storage/' . $user->image) }}" alt="" style="width: 100px">
@@ -62,7 +62,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>

@@ -34,6 +34,7 @@
 
                         <ul class="list-group mb-3">
                             @foreach ($promotions as $promotion)
+                            @if($promotion->id == 1 || $promotion->id == 9 || $promotion->id == 13 || $promotion->id == 17 || $promotion->id == 21 || $promotion->id == 25)
                                 <li class="list-group-item d-flex justify-content-between lh-condensed {{ $order->promotion_id == $promotion->id ? 'bg-warning' : '' }}">
                                     <div>
                                         <h6 class="my-0">{{ $promotion->name }}</h6>
@@ -42,12 +43,12 @@
                                     <button type="submit" name="promotion_id" value="{{ $promotion->id }}"
                                         class="btn btn-sm btn-info text-white">Apply</button>
                                 </li>
+                            
+                            @endif
                             @endforeach
                         </ul>
-
-                        
                             <div class="list-group mb-3">
-                                <label for="method" class="form-label">Method</label>
+                                <label for="method" class="form-label">Select the Method (Delivery or Collection)</label>
                                 <select class="form-control @error('method') is-invalid @enderror" id="method"
                                 name="method">
                                     @foreach (['collection', 'delivery'] as $value)

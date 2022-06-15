@@ -147,40 +147,159 @@ class CartController extends Controller
                 foreach ($cart->products as $product) {
                     $count += $product->pivot->quantity;
                 }
-
+                // BOGOF
+                // Medium & Large
                 // check if the promotion has a value and that is equal to the number of items in the cart
-                if ($promotion->value == $count) {
+                if ($promotion->value == $count &&  $promotion->code == 'BOGOF' && $promotion->pizza_model_id = 3 && $promotion->pizza_model_id = 6 
+                && $promotion->pizza_model_id = 9 && $promotion->pizza_model_id = 12 && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 
+                && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
 
                     // attach the promotion ID to the order
                     $order->promotion_id = $promotion->id;
-
+    
                     // check for the promotion price type and calculate the total
                     if ($promotion->price_type == 'fixed') {
-
                         $order->total = $cart->total - $promotion->price_value;
-
                         $order->discount = $cart->total - $order->total;
                     } else if ($promotion->price_type == 'percentage') {
-
-                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
-
+    
+                        $order->total = ($cart->total - ($cart->total * $promotion->price_value / 100)) / 2;
                         $order->discount = $cart->total - $order->total;
                     }
-
+    
                     // save the order
                     $order->save();
-
+    
                     session()->flash('promotion_success', $promotion->name . ' applied successfully.');
-                } else {
-
-                    $order->total = $cart->total;
-
-                    $order->discount = 0;
-
-                    $order->promotion_id = null;
-
+                }
+                // Three for Two
+                // Medium 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count &&  $promotion->code == '3FOR2' && $product->summary == 'Medium' 
+                && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $cart->total - $promotion->price_value;
+                        $order->discount = $cart->total - $order->total;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
                     $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Family Feast
+                // Medium 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == 'B21000OFF' && $product->summary == 'Medium' && $promotion->pizza_model_id = 2 
+                && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Large 
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2LARGE' && $product->summary == 'Large' 
+                &&  $promotion->pizza_model_id = 3 && $promotion->pizza_model_id = 6 && $promotion->pizza_model_id = 9 && $promotion->pizza_model_id = 12) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Large') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Large') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Medium
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2MEDIUM' && $product->summary == 'Medium'  
+                && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Small
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2SMALL' && $product->summary == 'Small' 
+                && $promotion->pizza_model_id = 1 && $promotion->pizza_model_id = 4 && $promotion->pizza_model_id = 7 && $promotion->pizza_model_id = 10) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Small') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Small') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
 
+                } else {
+    
+                    $order->total = $cart->total;
+                    $order->discount = 0;
+                    $order->promotion_id = null;
+    
+                    $order->save();
+    
                     session()->flash('error', 'Sorry, ' . $promotion->name . ' promotion is not applicable to your cart.');
                 }
             }
@@ -218,41 +337,161 @@ class CartController extends Controller
             }
             
 
-            // check if the promotion has a value and that is equal to the number of items in the cart
-            if ($promotion->value == $count) {
+            // BOGOF
+                // Medium & Large
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                if ($promotion->value == $count &&  $promotion->code == 'BOGOF' && $promotion->pizza_model_id = 3 && $promotion->pizza_model_id = 6 
+                && $promotion->pizza_model_id = 9 && $promotion->pizza_model_id = 12 && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 
+                && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
 
-                // attach the promotion ID to the order
-                $order->promotion_id = $promotion->id;
-
-                // check for the promotion price type and calculate the total
-                if ($promotion->price_type == 'fixed') {
-
-                    $order->total = $cart->total - $promotion->price_value;
-
-                    $order->discount = $cart->total - $order->total;
-                } else if ($promotion->price_type == 'percentage') {
-
-                    $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
-
-                    $order->discount = $cart->total - $order->total;
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed') {
+                        $order->total = $cart->total - $promotion->price_value;
+                        $order->discount = $cart->total - $order->total;
+                    } else if ($promotion->price_type == 'percentage') {
+    
+                        $order->total = ($cart->total - ($cart->total * $promotion->price_value / 100)) / 2;
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
                 }
+                // Three for Two
+                // Medium 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count &&  $promotion->code == '3FOR2' && $product->summary == 'Medium' 
+                && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $cart->total - $promotion->price_value;
+                        $order->discount = $cart->total - $order->total;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Family Feast
+                // Medium 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == 'B21000OFF' && $product->summary == 'Medium' && $promotion->pizza_model_id = 2 
+                && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Large 
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2LARGE' && $product->summary == 'Large' 
+                &&  $promotion->pizza_model_id = 3 && $promotion->pizza_model_id = 6 && $promotion->pizza_model_id = 9 && $promotion->pizza_model_id = 12) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Large') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Large') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Medium
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2MEDIUM' && $product->summary == 'Medium'  
+                && $promotion->pizza_model_id = 2 && $promotion->pizza_model_id = 5 && $promotion->pizza_model_id = 8 && $promotion->pizza_model_id = 11) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Medium') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Medium') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
+                }
+                // Two Small
+                // Large 
+                // check if the promotion has a value and that is equal to the number of items in the cart
+                elseif ($promotion->value == $count && $promotion->code == '2SMALL' && $product->summary == 'Small' 
+                && $promotion->pizza_model_id = 1 && $promotion->pizza_model_id = 4 && $promotion->pizza_model_id = 7 && $promotion->pizza_model_id = 10) {
+    
+                    // attach the promotion ID to the order
+                    $order->promotion_id = $promotion->id;
+    
+                    // check for the promotion price type and calculate the total
+                    if ($promotion->price_type == 'fixed' && $product->summary == 'Small') {
+                        $order->total = $promotion->price_value;
+                        $order->discount = $promotion->price_value;
+                    } else if ($promotion->price_type == 'percentage' && $product->summary == 'Small') {
+    
+                        $order->total = $cart->total - ($cart->total * $promotion->price_value / 100);
+                        $order->discount = $cart->total - $order->total;
+                    }
+    
+                    // save the order
+                    $order->save();
+    
+                    session()->flash('promotion_success', $promotion->name . ' applied successfully.');
 
-                // save the order
-                $order->save();
-
-                session()->flash('promotion_success', $promotion->name . ' applied successfully.');
-            } else {
-
-                $order->total = $cart->total;
-
-                $order->discount = 0;
-
-                $order->promotion_id = null;
-
-                $order->save();
-
-                session()->flash('error', 'Sorry, ' . $promotion->name . ' promotion is not applicable to your cart.');
-            }
+                } else {
+    
+                    $order->total = $cart->total;
+                    $order->discount = 0;
+                    $order->promotion_id = null;
+    
+                    $order->save();
+    
+                    session()->flash('error', 'Sorry, ' . $promotion->name . ' promotion is not applicable to your cart.');
+                }
         }
 
         // redirect to the checkout page
@@ -270,7 +509,6 @@ class CartController extends Controller
 
         // validate the request
         $validated = $request->validate([
-            "method"=>"nullable|string",
             "title" => "required",
             "first_name" => "required|string|max:255",
             "last_name" => "required|string|max:255",
@@ -282,7 +520,7 @@ class CartController extends Controller
             "postcode" => "required|string|max:255",
             "county" => "required|string|max:255",
             "phone" => "nullable",
-            "mobile" => "required|string|max:255"
+            "mobile" => "nullable|string|max:255"
         ]);
 
         // get the user from the request
@@ -295,7 +533,7 @@ class CartController extends Controller
         $order->update([
             'status' => 'processing',
             'payment_status' => 'paid',
-            'method' => 'collection', 'delivery',
+            'method' => 'collection' , 'delivery',
             'address_1' => $validated['address_1'],
             'address_2' => $validated['address_2'],
             'city' => $validated['city'],

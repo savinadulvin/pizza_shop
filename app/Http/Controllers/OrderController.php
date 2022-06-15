@@ -84,10 +84,7 @@ class OrderController extends Controller
         $order->update($validated);
 
         session()->flash('success', 'Order got updated successfully');
-        if(auth()->user()->role == 'admin')
         return redirect()->route('orders.index');
-        else
-        return redirect()->route('orders.history');
     }
 
     /**
