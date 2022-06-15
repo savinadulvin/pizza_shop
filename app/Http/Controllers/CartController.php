@@ -509,6 +509,7 @@ class CartController extends Controller
 
         // validate the request
         $validated = $request->validate([
+            "method" => "nullable",
             "title" => "required",
             "first_name" => "required|string|max:255",
             "last_name" => "required|string|max:255",
@@ -533,7 +534,7 @@ class CartController extends Controller
         $order->update([
             'status' => 'processing',
             'payment_status' => 'paid',
-            'method' => 'collection' , 'delivery',
+            'method'=> 'collection','delivery',
             'address_1' => $validated['address_1'],
             'address_2' => $validated['address_2'],
             'city' => $validated['city'],
